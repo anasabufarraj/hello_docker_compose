@@ -1,22 +1,26 @@
----
 version: "3.8"
-volumes:
-  movies:  # Create an empty volume
 services:
   web:
+    depends_on:
+      - api
     build: ./frontend
     ports:
       - "3000:3000"
   api:
+    depends_on:
+      - db
     build: ./backend
     ports:
       - "3001:3001"
-    command: ./docker-entrypoint.sh
+    command: ./backend/docker-entrypoint.sh
     environment:
       DB_URL: mongodb://db/movies # Environment variable
-  database:
-    image: mongo:4.0-xenial # Pull mongo image build on top of Ubuntu Xenial
+  db:
+    image: mongo:4.0-xenial # Pull mongo image build on top of Xenial (Ubuntu Version 16).
     ports:
       - "27017:27017"
     volumes:
       - movies:/data/db
+volumes:
+  movies: # Create an empty volume
+
