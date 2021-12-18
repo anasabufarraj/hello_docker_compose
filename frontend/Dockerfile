@@ -1,8 +1,8 @@
-FROM node:14.16.0-alpine3.13
+FROM node:fermium-alpine3.14
 RUN addgroup app && adduser -S -G app app
 USER app
 WORKDIR /app
-COPY package*.json ./
+COPY package*.json /app
 RUN npm install
 COPY . /app
 EXPOSE 3000
