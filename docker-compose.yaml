@@ -26,4 +26,4 @@ services:
     volumes:
       - movies:/data/db
 volumes:
-  movies: # Create an empty volume
+  movies: null # Create an empty volume

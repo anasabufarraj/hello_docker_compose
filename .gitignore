@@ -12,7 +12,8 @@ node_modules
 /build
 
 # misc
-/.idea
+*.log
+.idea
 .DS_Store
 prettier.config.js
 .env.local
